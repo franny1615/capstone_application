@@ -25,7 +25,6 @@ public class BankAccountFragment extends Fragment {
     private InteractionResult plaidResults = null;
     private PlaidLinkInteractions plaidRequests;
     private BankAccountViewModel bankAccountVM;
-    private TransactionsViewModel transactionsViewModel;
 
     public BankAccountFragment() {
         super(R.layout.bank_account_list);
@@ -40,30 +39,16 @@ public class BankAccountFragment extends Fragment {
             }
             @Override
             public void exchangedPublicToken(String access_token, String item_id) {
-                bankAccountVM.insertBankAccount(new BankAccount(item_id,access_token));
+                LabelAccountDialog d = new LabelAccountDialog(access_token,item_id);
+                d.show(requireActivity().getSupportFragmentManager(),"labelAccount");
                 if (bankAccountVM.getByItemId(item_id) != null) {
                     plaidRequests.getTransactions(access_token,item_id);
                 }
             }
             @Override
-            public void retrievedTransactions(JSONArray transactions, String itemId) {
-                for(int i = 0; i < transactions.length(); i++){
-                    try {
-                        JSONObject item = transactions.getJSONObject(i);
-                        String categories = item.getJSONArray("category").toString();
-                        String merchant = item.getString("name");
-                        double amount = (double) item.get("amount");
-                        String date = item.getString("date");
-                        transactionsViewModel.insertTransaction(new Transactions(itemId,date,categories,merchant,amount));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+            public void retrievedTransactions(JSONArray transactions, String itemId) { }
             @Override
-            public void notifyError(Exception error) {
-                Log.d("ERROR::::",error.getMessage());
-            }
+            public void notifyError(Exception error) { Log.d("ERROR::::",error.getMessage()); }
         };
     }
 
@@ -79,7 +64,6 @@ public class BankAccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         bankAccountVM = new ViewModelProvider(requireActivity()).get(BankAccountViewModel.class);
-        transactionsViewModel = new ViewModelProvider(requireActivity()).get(TransactionsViewModel.class);
         BankAccountAdapter bankAccountAdapter = new BankAccountAdapter(requireActivity());
         bankAccountVM.getAllAccounts().observe(getViewLifecycleOwner(), bankAccountAdapter::setData);
         initializePlaidResults();

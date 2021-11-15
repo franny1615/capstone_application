@@ -9,10 +9,12 @@ public class BankAccount {
     private int _id;
     private final String account_name;
     private final String access_token;
+    private final String account_label;
 
-    public BankAccount(String account_name, String access_token) {
+    public BankAccount(String account_name, String access_token, String account_label) {
         this.account_name = account_name;
         this.access_token = access_token;
+        this.account_label = account_label;
     }
 
     public int get_id() {
@@ -30,4 +32,6 @@ public class BankAccount {
     public String getAccess_token() {
         return access_token;
     }
+
+    public String getAccount_label() { return account_label; }
 }

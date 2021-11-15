@@ -17,23 +17,23 @@ import java.util.List;
 
 public class BankAccountAdapter extends RecyclerView.Adapter<BankAccountAdapter.ViewHolder> {
     private List<BankAccount> localDataSet;
-    private BankAccountViewModel bavm;
-    private TransactionsViewModel tvm;
+    private final BankAccountViewModel bavm;
+    private final TransactionsViewModel tvm;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView accountName;
-        private final TextView accessCode;
+        private final TextView accountLabel;
+        private final TextView accountId;
         private final Button deleteAccount;
 
         public ViewHolder(View view) {
             super(view);
-            accountName = view.findViewById(R.id.bank_account_name);
-            accessCode = view.findViewById(R.id.bank_account_access_code);
+            accountLabel = view.findViewById(R.id.bank_account_label);
+            accountId = view.findViewById(R.id.bank_account_id);
             deleteAccount = view.findViewById(R.id.delete_account);
         }
 
-        public TextView getAccountName() {return accountName;}
-        public TextView getAccessCode() {return accessCode;}
+        public TextView getAccountLabel() {return accountLabel;}
+        public TextView getAccountId() {return accountId;}
         public Button getDeleteAccountButton() {return deleteAccount;}
     }
 
@@ -57,8 +57,9 @@ public class BankAccountAdapter extends RecyclerView.Adapter<BankAccountAdapter.
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(BankAccountAdapter.ViewHolder viewHolder, final int position) {
-        viewHolder.getAccountName().setText(localDataSet.get(position).getAccount_name());
-        viewHolder.getAccessCode().setText(localDataSet.get(position).getAccess_token());
+        viewHolder.getAccountLabel().setText(localDataSet.get(position).getAccount_label());
+        String id = "ID: " + localDataSet.get(position).get_id();
+        viewHolder.getAccountId().setText(id);
         viewHolder.getDeleteAccountButton().setOnClickListener(v -> {
             bavm.deleteBankAccount(localDataSet.get(position));
             tvm.deleteAllTransactionsByItemId(localDataSet.get(position).getAccount_name());

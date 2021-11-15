@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "bcce11ca1eeba903f9aca52595b2113d",
+    "identityHash": "61c99de48b5620ffcc59a262e28a318c",
     "entities": [
       {
         "tableName": "bank_account_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `account_name` TEXT, `access_token` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `account_name` TEXT, `access_token` TEXT, `account_label` TEXT)",
         "fields": [
           {
             "fieldPath": "_id",
@@ -23,6 +23,12 @@
           {
             "fieldPath": "access_token",
             "columnName": "access_token",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "account_label",
+            "columnName": "account_label",
             "affinity": "TEXT",
             "notNull": false
           }
@@ -90,7 +96,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bcce11ca1eeba903f9aca52595b2113d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '61c99de48b5620ffcc59a262e28a318c')"
     ]
   }
 }

@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Francisco/AndroidStudioProjects/plaidDemo/app/src/main/res/layout/bank_account_cardview.xml" value="0.13903985507246377" />
+        <entry key="..\:/Users/Francisco/AndroidStudioProjects/plaidDemo/app/src/main/res/layout/bank_account_cardview.xml" value="0.25" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/plaidDemo/app/src/main/res/layout/bank_account_list.xml" value="0.13903985507246377" />
+        <entry key="..\:/Users/Francisco/AndroidStudioProjects/plaidDemo/app/src/main/res/layout/label_new_account.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Francisco/AndroidStudioProjects/plaidDemo/app/src/main/res/layout/transactions_list.xml" value="0.33" />
       </map>
     </option>
   </component>
