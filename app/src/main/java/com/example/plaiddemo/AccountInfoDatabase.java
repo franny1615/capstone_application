@@ -1,11 +1,8 @@
 package com.example.plaiddemo;
-
 import android.content.Context;
-
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.Transaction;
 
 import com.example.plaiddemo.BankAccounts.BankAccount;
 import com.example.plaiddemo.BankAccounts.BankAccountDAO;

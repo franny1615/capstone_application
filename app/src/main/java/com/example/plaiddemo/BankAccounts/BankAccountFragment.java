@@ -21,6 +21,8 @@ import com.plaid.link.result.LinkSuccess;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 public class BankAccountFragment extends Fragment {
     private InteractionResult plaidResults = null;
     private PlaidLinkInteractions plaidRequests;
@@ -57,6 +59,7 @@ public class BankAccountFragment extends Fragment {
                 if (result instanceof LinkSuccess) {
                     LinkSuccess res = (LinkSuccess) result;
                     plaidRequests.exchangePublicToken(res.getPublicToken());
+                    String institutionName = Objects.requireNonNull(res.getMetadata().getInstitution()).getName(); // TODO this has the bank name dawg
                 } // there is an instanceof LinkExit that can be handled
             }
     );

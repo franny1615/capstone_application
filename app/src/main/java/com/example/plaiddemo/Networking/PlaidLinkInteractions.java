@@ -1,22 +1,16 @@
 package com.example.plaiddemo.Networking;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.plaid.link.configuration.LinkTokenConfiguration;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class PlaidLinkInteractions {
     private final String URL_PREFIX = "https://cap-backe.herokuapp.com";

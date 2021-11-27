@@ -1,5 +1,4 @@
 package com.example.plaiddemo.BankAccounts;
-
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
